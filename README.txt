@@ -1,5 +1,11 @@
-This is a procedural narative generation project with few goals:
+This is a procedural narative generator made with a few goals:
 
-Being able to simulate the world from the initial state, and expand with characters, quests etc.
-Characters with different description, look and attitude to the player and other characters.
-Story generator with deep quests and branches.
+* To generate an nearly infinite world only bound by your imagination
+* To give a player ability to interact with nearly everything in nearly infinite way and change the world in a way never seen before
+* Generate unique scenarious, quests and characters
+* Just to make something cool :)
+
+Inspired by few talks on GDC about procedural generation and Dwarf Fortress.
+
+This is STILL work in progress and current state of this project is in: PROOF OF CONCEPT
+The changelog (if any) will be filled with updates and changes (mostly major)
