@@ -103,7 +103,8 @@ void World::GetPlayerInput()
 			if(obj == nullptr) {
 				Logger::lerr << "Cannot find the \"" << objName << "\" object to look at" << std::endl; }
 			else {
-				obj->Look(World::player.get());
+				World::player->LookAt(obj);
+				//obj->Look(World::player.get());
 			}
 		}
 	}

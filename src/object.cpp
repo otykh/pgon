@@ -21,31 +21,65 @@ const cstring& Object::get_colored_name() const
 {
 	return this->name;
 }
-void Object::Touch(const Object* o)
+void Object::LookAt(Object* const o)
 {
-	Logger::lerr << "Cannot touch this object" << std::endl;
+	Logger::lerr << "Cannot look" << std::endl;
 }
-void Object::Use(const Object* o)
+void Object::Touch(Object* const o)
+{
+	Logger::lerr << "Cannot touch" << std::endl;
+}
+void Object::Use(Object* const o)
+{
+	Logger::lerr << "Cannot use" << std::endl;
+}
+void Object::Open(Object* const o)
+{
+	Logger::lerr << "Cannot open" << std::endl;
+}
+void Object::Close(Object* const o)
+{
+	Logger::lerr << "Cannot close" << std::endl;
+}
+void Object::Unlock(Object* const o)
+{
+	Logger::lerr << "Cannot unlock" << std::endl;
+}
+void Object::TalkTo(Object* const o)
+{
+	Logger::lerr << "Cannot talking" << std::endl;
+}
+void Object::PickUp(Object* const o)
+{
+	Logger::lerr << "Cannot pick" << std::endl;
+}
+
+void Object::TouchedBy(Object* const o)
+{
+	Logger::lerr << "Nothing happend" << std::endl;
+}
+void Object::UsedBy(Object* const o)
 {
 	Logger::lerr << "Cannot use this object" << std::endl;
 }
-void Object::Open(const Object* o)
+void Object::OpenedBy(Object* const o)
 {
-	Logger::lerr << "Cannot open this object" << std::endl;
+	Logger::lerr << "Cannot open" << std::endl;
 }
-void Object::Close(const Object* o)
+void Object::ClosedBy(Object* const o)
 {
-	Logger::lerr << "Cannot close this object" << std::endl;
+	Logger::lerr << "Cannot close" << std::endl;
 }
-void Object::Unlock(const Object* o)
+void Object::UnlockedBy(Object* const o)
 {
-	Logger::lerr << "Cannot unlock this object" << std::endl;
+	Logger::lerr << "Cannot unlock" << std::endl;
 }
-void Object::TalkTo(const Object* o)
+void Object::TalkedToBy(Object* const o)
 {
-	Logger::lerr << "Cannot talking to this object" << std::endl;
+	Logger::lerr << "Cannot talk to" << std::endl;
 }
-void Object::PickUp(const Object* o)
+void Object::PickedUpBy(Object* const o)
 {
-	Logger::lerr << "Cannot pick up this object" << std::endl;
+	Logger::lerr << "Cannot be picked up" << std::endl;
 }
+
