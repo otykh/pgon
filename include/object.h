@@ -4,21 +4,25 @@
 #include <memory>
 #include "logger.h"
 #include "room.h"
+#include "colorer.h"
 
 struct Room;
 
 class Object
 {
 private:
-	std::string name;
+	cstring name;
 	static int id_counter;
 	int id;
 public:
 	Room* housingRoom;
 
+	Object(const cstring& name);
 	Object(const std::string& name);
+	Object(const char* name);
 
 	const std::string get_name() const;
+	const cstring& get_colored_name() const;
 	const int get_id() const;
 	virtual void Look(const Object* o) = 0;
  	virtual void Touch(const Object* o);

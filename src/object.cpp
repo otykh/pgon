@@ -1,18 +1,23 @@
 #include "object.h"
 
 int Object::id_counter;
-Object::Object(const std::string& name)
+Object::Object(const cstring& name) : name(name)
 {
 	this->id = id_counter;
 	id_counter++;
-
-	this->name = name;
 }
+Object::Object(const std::string& name) : Object(cstring(name)) {}
+Object::Object(const char* name) : Object(cstring(name)) {}
+
 const int Object::get_id() const
 {
 	return this->id;
 }
 const std::string Object::get_name() const
+{
+	return this->name.text;
+}
+const cstring& Object::get_colored_name() const
 {
 	return this->name;
 }

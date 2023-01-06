@@ -3,22 +3,52 @@
 #include <cstring>
 
 const char* cstring::end = { "\033[0m" };
-const char cstring::c[8][8] =
+const char* cstring::start = { "\033[" };
+
+const char* cstring::c[8] =
 {
-	"\033[0;30m",
-	"\033[0;31m",
-	"\033[0;32m",
-	"\033[0;33m",
-	"\033[0;34m",
-	"\033[0;35m",
-	"\033[0;36m",
-	"\033[0;37m"
+	"30m",
+	"31m",
+	"32m",
+	"33m",
+	"34m",
+	"35m",
+	"36m",
+	"37m"
+};
+const char* cstring::bc[8] =
+{
+	"40;",
+	"41;",
+	"42;",
+	"43;",
+	"44;",
+	"45;",
+	"46;",
+	"47;"
+};
+const char* cstring::st[4] =
+{
+	"0;", // normal
+	"1;", // bold
+	"4;", // underline
+	"5;"  // blink
 };
 
-ColoredText::ColoredText(const char* text, COLORS col)
+ColoredText::ColoredText(const char* text, COLORS col, COLORS background, STYLE style)
 {
 	this->text = text;
 	this->color = col;
+	this->background = background;
+	this->style = style;
+}
+
+ColoredText::ColoredText(const std::string text, COLORS col, COLORS background, STYLE style)
+{
+	this->text = text;
+	this->color = col;
+	this->background = background;
+	this->style = style;
 }
 
 ColoredText& ColoredText::operator=(const char* text)
@@ -29,6 +59,13 @@ ColoredText& ColoredText::operator=(const char* text)
 
 std::ostream& operator<<(std::ostream& os, const ColoredText& ct)
 {
-	os << ColoredText::c[ct.color] << ct.text << ColoredText::end;
+	if(ct.background != ColoredText::COLORS::NONE)
+	{
+		os << ColoredText::start << ColoredText::st[ct.style] << ColoredText::bc[ct.background] << ColoredText::c[ct.color] << ct.text << ColoredText::end;
+	}
+	else
+	{
+		os << ColoredText::start << ColoredText::st[ct.style] << ColoredText::c[ct.color] << ct.text << ColoredText::end;
+	}
 	return os;
 }

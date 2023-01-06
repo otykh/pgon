@@ -5,10 +5,11 @@
 
 struct Shrine : public Object
 {
-	Shrine() : Object("The Shrine Of Death") {}
+	Shrine() : Object(cstring("The Shrine Of Death", cstring::MAGENTA)) {}
 	inline void Look(const Object* o) override
 	{
-		Logger::l << "You look at the statue resembeling a human that is being reborn from the depths below, signaling that life is a loop" << std::endl;
+		Logger::l << this->get_colored_name() << std::endl;
+		Logger::ls << "You look at the statue resembeling a human that is being reborn from the depths below, signaling that life is a loop" << std::endl;
 	}
 	inline void Touch(const Object* o) override
 	{

@@ -38,11 +38,11 @@ void World::NameEverythingInTheRoom(const Room* room, const Object* caller)
 		Object* lookedAt = room->objects[i];
 		if(lookedAt->get_id() == caller->get_id())
 		{
-			Logger::ls << lookedAt->get_name() << " (YOU)" << std::endl;
+			Logger::ls << lookedAt->get_colored_name() << " (YOU)" << std::endl;
 		}
 		else
 		{
-			Logger::ls << lookedAt->get_name() << std::endl;
+			Logger::ls << lookedAt->get_colored_name() << std::endl;
 		}
 	}
 }

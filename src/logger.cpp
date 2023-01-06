@@ -13,7 +13,7 @@ const cstring Logger::signs[5] = {
 	cstring("[i] "),
 	cstring("[!] ", cstring::WHITE),
 	cstring("[e] ", cstring::RED),
-	cstring("[CRITICAL] ", cstring::RED),
+	cstring("[CRITICAL] ", cstring::BLACK, cstring::RED),
 	"\0"};
 	//"\033[41;30m[CRITICAL]\033[0m ", "\0"};
 
