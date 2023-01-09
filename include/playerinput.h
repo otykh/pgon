@@ -1,9 +1,13 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include "logger.h"
+#include "world.h"
 
 class pi
 {
 public:
-	static std::string GetLookAtObjectName(std::string command);
+	static void GetPlayerInput();
+	static std::string GetLookAtObjectName(const std::string& comm);
 };

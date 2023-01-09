@@ -23,35 +23,35 @@ const cstring& Object::get_colored_name() const
 }
 void Object::LookAt(Object* const o)
 {
-	Logger::lerr << "Cannot look" << std::endl;
+	o->LookedBy(this);
 }
 void Object::Touch(Object* const o)
 {
-	Logger::lerr << "Cannot touch" << std::endl;
+	o->TouchedBy(this);
 }
 void Object::Use(Object* const o)
 {
-	Logger::lerr << "Cannot use" << std::endl;
+	o->UsedBy(this);
 }
 void Object::Open(Object* const o)
 {
-	Logger::lerr << "Cannot open" << std::endl;
+	o->OpenedBy(this);
 }
 void Object::Close(Object* const o)
 {
-	Logger::lerr << "Cannot close" << std::endl;
+	o->ClosedBy(this);
 }
 void Object::Unlock(Object* const o)
 {
-	Logger::lerr << "Cannot unlock" << std::endl;
+	o->UnlockedBy(this);
 }
 void Object::TalkTo(Object* const o)
 {
-	Logger::lerr << "Cannot talking" << std::endl;
+	o->TalkedToBy(this);
 }
 void Object::PickUp(Object* const o)
 {
-	Logger::lerr << "Cannot pick" << std::endl;
+	o->PickedUpBy(this);
 }
 
 void Object::TouchedBy(Object* const o)

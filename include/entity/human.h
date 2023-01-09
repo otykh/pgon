@@ -17,5 +17,6 @@ struct Humanoid : public Creature
 		{
 			Logger::l << "You look at yourself" << std::endl;
 		}
+		// description of the human here
 	}
 };

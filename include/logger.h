@@ -34,11 +34,11 @@ public:
 	template<class T>
 	std::ostream& operator<<(const T& v)
 	{
-		return std::cout << signs[messageType] << v;
+		return std::cout << signs[messageType] << " " << v;
 	}
 	std::ostream& operator<<(std::ostream&(*f)(std::ostream&))
 	{
-		return std::cout << signs[messageType] << f;
+		return std::cout << signs[messageType] << " " << f;
 	}
 };
 
