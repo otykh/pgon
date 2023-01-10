@@ -33,6 +33,10 @@ void Object::Use(Object* const o)
 {
 	o->UsedBy(this);
 }
+void Object::Enter(Object* const o)
+{
+	o->EnteredBy(this);
+}
 void Object::Open(Object* const o)
 {
 	o->OpenedBy(this);
@@ -61,6 +65,10 @@ void Object::TouchedBy(Object* const o)
 void Object::UsedBy(Object* const o)
 {
 	Logger::lerr << "Cannot use this object" << std::endl;
+}
+void Object::EnteredBy(Object* const o)
+{
+	Logger::lerr << "Cannot enter this object" << std::endl;
 }
 void Object::OpenedBy(Object* const o)
 {

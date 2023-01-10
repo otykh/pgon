@@ -30,6 +30,8 @@ int main()
 	World world;
 
 	world.init();
+	Logger::l << "World initialized" << std::endl;
+	Logger::lwarn << "Game started!" << std::endl;
 
 	for(;;)
 	{

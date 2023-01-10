@@ -11,7 +11,7 @@ Logger Logger::lcrit = Logger(Logger::CRIT);
 
 const cstring Logger::signs[5] = {
 	cstring("[i]"),
-	cstring("[!]", cstring::WHITE),
+	cstring("[!]", cstring::YELLOW),
 	cstring("[e]", cstring::RED),
 	cstring("[CRITICAL]", cstring::BLACK, cstring::RED),
 	"\0"};

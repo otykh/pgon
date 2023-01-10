@@ -35,7 +35,9 @@ public:
 	template<typename lambda>
 	static void CallObjectFunctionFromPlayer(const std::string& objName, const lambda& func);
 
+	static void PlayerMove(const char& dir);
 	static void PlayerLookAtObject(const std::string& objName);
+	static void PlayerEnterObject(const std::string& objName);
 	static void PlayerTouchObject(const std::string& objName);
 	static void PlayerUseObject(const std::string& objName);
 	static void PlayerPickUpObject(const std::string& objName);

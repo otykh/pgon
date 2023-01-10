@@ -2,7 +2,11 @@
 
 Room::Room(Object* owner)
 {
-
+	this->owner = owner;
+}
+CityBlock::CityBlock(City* city, Object* owner, int x, int y) : x(x), y(y), Room(owner)
+{
+	this->cityOrigin = city;
 }
 Room::~Room()
 {

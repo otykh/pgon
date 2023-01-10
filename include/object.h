@@ -36,6 +36,7 @@ public:
 	virtual void LookAt(Object* const o);
  	virtual void Touch(Object* const o);
  	virtual void Use(Object* const o);
+	virtual void Enter(Object* const o);
  	virtual void Open(Object* const o);
 	virtual void Close(Object* const o);
 	virtual void Unlock(Object* const o);
@@ -52,9 +53,11 @@ public:
 	virtual void LookedBy(Object* const o) = 0;
  	virtual void TouchedBy(Object* const o);
  	virtual void UsedBy(Object* const o);
+	virtual void EnteredBy(Object* const o);
  	virtual void OpenedBy(Object* const o);
 	virtual void ClosedBy(Object* const o);
 	virtual void UnlockedBy(Object* const o);
 	virtual void TalkedToBy(Object* const o);
 	virtual void PickedUpBy(Object* const o);
 };
+

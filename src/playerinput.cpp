@@ -11,6 +11,37 @@ void pi::GetPlayerInput()
 		Logger::l << "Use these commands to interact with the world: " << std::endl;
 		Logger::ls << "* look\n* touch\n* use\n* pick up\n* open\n* close\n* unlock\n* talk to\n" << std::endl;
 	}
+	else if(comm.rfind("move", 0) == 0)
+	{
+		if(comm.length() <= 5)
+		{
+			Logger::lerr << "Bad usage. Use MOVE [north/east/south/west]" << std::endl;
+		}
+		else
+		{
+			char dir = comm.substr(5, 1).at(0); // get the first letter (n, e, s, w)
+			if(dir == 's' || dir == 'e' || dir == 'n' || dir == 'w')
+			{
+				World::PlayerMove(dir);
+			}
+			else
+			{
+				Logger::lerr << "Bad usage. Use MOVE [north/east/south/west]" << std::endl;
+			}
+		}
+	}
+	else if(comm.rfind("enter", 0) == 0)
+	{
+		if(comm.length() <= 6)
+		{
+			Logger::lerr << "Bad usage. Use ENTER [object of interest]" << std::endl;
+		}
+		else
+		{
+			std::string objName = comm.substr(6, comm.length() - 6);
+			World::PlayerEnterObject(objName);
+		}
+	}
 	else if(comm.rfind("look", 0) == 0)
 	{
 		std::string objName = pi::GetLookAtObjectName(comm);

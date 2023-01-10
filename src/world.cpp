@@ -17,7 +17,20 @@ void World::init()
 	World::seed = time(NULL);
 	srand(World::seed);
 
+	Logger::l << "Making a new city" << std::endl;
+
 	int cityIndex = World::MakeNewCity(); // this will create a random city
+
+	Logger::l << "Generating a new block" << std::endl;
+
+	/*int thing = City::citySizeArray[World::city_list[cityIndex]->scale];
+	for(int y = (thing / 2) * -1; y < thing / 2; y++)
+	{
+		for(int x = (thing / 2) * -1; x < thing / 2; x++)
+		{
+			Logger::lwarn << World::city_list[cityIndex]->GetRoomIndexAt(x, y) << std::endl;
+		}
+	}*/
 
 	// since this is an init, the fist block at (0, 0) will be generated
 	World::city_list[cityIndex]->GenerateBlock(0, 0);
@@ -25,12 +38,50 @@ void World::init()
 	// then the player should be generated
 	// NOTE: this will also mean that the default generation of the player is humanoid, but because it can be anything that has inteligence it should be used (in short: player can start as any creature);
 
+	Logger::l << "Make player" << std::endl;
 	World::player = std::shared_ptr<Object>(new Humanoid());
+	Logger::l << "Putting player in the world" << std::endl;
 	World::AddNewObject(player); // assign the player to the world
 
+	Logger::l << "Player entering the city..." << std::endl;
 	World::city_list[cityIndex]->Enter(World::player.get(), 0, 0); // enter where the shrine of death is located
 }
 
+void World::PlayerMove(const char& dir)
+{
+	// this should only apply when the player is in the CITY BLOCK
+	// NOT when the player is in the ROOM or APRATMENT
+	int x = 0;
+	int y = 0;
+	switch(dir)
+	{
+		case 'n':
+			y = 1;
+			break;
+		case 'e':
+			x = 1;
+			break;
+		case 's':
+			y = -1;
+			break;
+		case 'w':
+			x = -1;
+			break;
+		default:
+			Logger::lerr << "Cannot move the player in the direction of " << dir << " (unknown direction)" << std::endl;
+			break;
+	}
+
+	if(World::player->housingRoom->isCityMember())
+	{
+		((CityBlock*)World::player->housingRoom)->cityOrigin->Move(World::player.get(), x, y);
+	}
+	else
+	{
+		Logger::lcrit << "Cannot move around in a non-city member room" << std::endl;
+		Logger::lwarn << "Player will stay in a current room" << std::endl;
+	}
+}
 template <typename lambda>
 void World::CallObjectFunctionFromPlayer(const std::string& objName, const lambda& func)
 {
@@ -41,6 +92,10 @@ void World::CallObjectFunctionFromPlayer(const std::string& objName, const lambd
 	else {
 		func(obj);
 	}
+}
+void World::PlayerEnterObject(const std::string& objName)
+{
+	World::CallObjectFunctionFromPlayer(objName, [](Object* o){ World::player->Enter(o); });
 }
 // these functions are callbacks from pi (PlayerInput), they also can have checks like LookAt has "around"
 void World::PlayerLookAtObject(const std::string& objName)
